@@ -1,4 +1,4 @@
-ProfileValue = 4.5
+ProfileValue = 4.99
 Vm = 0.25 # m/s
 Sm = 0.2   # m
 Tm = 1.0 # s

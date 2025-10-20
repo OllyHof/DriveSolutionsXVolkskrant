@@ -1,5 +1,12 @@
 import ProfileValue as P
 import Inertia as I
+import Other as O
+#P.ProfileValueCalc(4.9999, 0.25, 0.2, 1)
 
-#P.ProfileValueCalc(ProfileValue, Vm, Sm, Tm)
-#I.Main
+#O.PDR(PDR)
+#I.main()
+#print(0.011675/pow(30,2))
+#I.main()
+O.RMS()
+##Vrms
+

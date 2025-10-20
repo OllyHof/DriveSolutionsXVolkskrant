@@ -106,5 +106,3 @@ def main():
         print("⚠ Ongeldige keuze. Start het programma opnieuw.")
 
 # --- Hoofdprogramma ---
-while True:
-    main()
