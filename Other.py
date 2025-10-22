@@ -7,7 +7,7 @@ def PDR(pdr):
 def POWER(Speed, Force):
     print(Speed*Force)
 
-def RMS():
+def RMS_A():
     Tt = 2.6
     T1 = 0.055  #Begin trapezium 1
     T2 = 0.245 #Eind Versnelling trapezium 1
@@ -65,17 +65,114 @@ def RMS():
     Tm12 = pow(0.0573, 2)
     Tm13 = pow(0.1063, 2)
 
+    Kt = 0.73
+
+    Kt = 0.73
+
+    I1 = 0.0573 / Kt
+    I2 = 0.0973 / Kt
+    I3 = 0.0573 / Kt
+    I4 = 0.0173 / Kt
+    I5 = 0.1308 / Kt
+    I6 = -0.0163 / Kt
+    I7 = 0.0573 / Kt
+    I8 = -0.0163 / Kt
+    I9 = 0.1308 / Kt
+    I10 = 0.0573 / Kt
+    I11 = 0.0083 / Kt
+    I12 = 0.0573 / Kt
+    I13 = 0.1063 / Kt
+
+    print("I1:", I1)
+    print("I2:", I2)
+    print("I3:", I3)
+    print("I4:", I4)
+    print("I5:", I5)
+    print("I6:", I6)
+    print("I7:", I7)
+    print("I8:", I8)
+    print("I9:", I9)
+    print("I10:", I10)
+    print("I11:", I11)
+    print("I12:", I12)
+    print("I13:", I13)
+
+    I1 = pow(0.0573 / Kt, 2)
+    I2 = pow(0.0973 / Kt, 2)
+    I3 = pow(0.0573 / Kt, 2)
+    I4 = pow(0.0173 / Kt, 2)
+    I5 = pow(0.1308 / Kt, 2)
+    I6 = pow(-0.0163 / Kt, 2)
+    I7 = pow(0.0573 / Kt, 2)
+    I8 = pow(-0.0163 / Kt, 2)
+    I9 = pow(0.1308 / Kt, 2)
+    I10 = pow(0.0573 / Kt, 2)
+    I11 = pow(0.0083 / Kt, 2)
+    I12 = pow(0.0573 / Kt, 2)
+    I13 = pow(0.1063 / Kt, 2)
+
     Vrms = (m.sqrt((1/Tt)*((V1*T1) + (V2*T2) + (V3*T3) + (V4*T4) + (V5*T5) + (V6*T6) + (V7*T7) +
     (V8*T8) + (V9*T9) + (V10*T10) + (V11*T11) + (V12*T12) + (V13*T13))))
-    print(Vrms)
+    print("Vrms: ", Vrms)
 
     Frms = (m.sqrt((1 / Tt) * ((F1 * T1) + (F2 * T2) + (F3 * T3) + (F4 * T4) + (F5 * T5) + (F6 * T6) + (F7 * T7) +
                                (F8 * T8) + (F9 * T9) + (F10 * T10) + (F11 * T11) + (F12 * T12) + (F13 * T13))))
-    print(Frms)
+    print("Frms: ", Frms)
 
     Tmrms = (m.sqrt((1 / Tt) * ((Tm1 * T1) + (Tm2 * T2) + (Tm3 * T3) + (Tm4 * T4) + (Tm5 * T5) + (Tm6 * T6) + (Tm7 * T7) +
                                (Tm8 * T8) + (Tm9 * T9) + (Tm10 * T10) + (Tm11 * T11) + (Tm12 * T12) + (Tm13 * T13))))
-    print(Tmrms)
+    print("Tmrms: ", Tmrms)
+
+    Irms = (
+        m.sqrt((1 / Tt) * ((I1 * T1) + (I2 * T2) + (I3 * T3) + (I4 * T4) + (I5 * T5) + (I6 * T6) + (I7 * T7) +
+                           (I8 * T8) + (I9 * T9) + (I10 * T10) + (I11 * T11) + (I12 * T12) + (I13 * T13))))
+    print("Irms: ",Irms)
 
     Prms = Vrms * Frms
-    print(Prms)
+    print("Prms: ", Prms)
+
+def RMS_B():
+        Tt = 2.6
+        T1 = 1.1875  # Begin trapezium 1
+        T2 = 0.225  # Eind Versnelling trapezium 1
+        T3 = 1.1875  # Begin Vertaging trapezium 1
+
+        W1 = pow(0.5*308.75, 2)
+        W2 = pow(308.75, 2)
+        W3 = pow(0.5*308.75, 2)
+
+        TM1 = pow(28.367, 2)
+        TM2 = pow(6.094, 2)
+        TM3 = pow(28.367, 2)
+
+        Kt = 0.73
+
+        Kt = 0.73
+
+        I1 = 0.0573 / Kt
+        I2 = 0.0973 / Kt
+        I3 = 0.0573 / Kt
+
+        print("I1:", I1)
+        print("I2:", I2)
+        print("I3:", I3)
+
+
+        I1 = pow(0.0573 / Kt, 2)
+        I2 = pow(0.0973 / Kt, 2)
+        I3 = pow(0.0573 / Kt, 2)
+
+        Wrms = (m.sqrt(
+            (1 / Tt) * ((W1 * T1) + (W2 * T2) + (W3 * T3))))
+        print("Wrms: ", Wrms)
+
+        TMrms = (m.sqrt(
+            (1 / Tt) * ((TM1 * T1) + (TM2 * T2) + (TM3 * T3))))
+        print("TLrms: ", TMrms)
+
+        Irms = (
+            m.sqrt((1 / Tt) * ((I1 * T1) + (I2 * T2) + (I3 * T3))))
+        print("Irms: ", Irms)
+
+        Prms = Wrms * TMrms
+        print("Prms: ", Prms)
