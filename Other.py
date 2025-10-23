@@ -137,30 +137,42 @@ def RMS_B():
         T2 = 0.225  # Eind Versnelling trapezium 1
         T3 = 1.1875  # Begin Vertaging trapezium 1
 
-        W1 = pow(0.5*308.75, 2)
-        W2 = pow(308.75, 2)
-        W3 = pow(0.5*308.75, 2)
-
-        TM1 = pow(28.367, 2)
-        TM2 = pow(6.094, 2)
-        TM3 = pow(28.367, 2)
+        W1 = pow(0.5*(95*1.42), 2)
+        W2 = pow((95*1.42), 2)
+        W3 = pow(0.5*(95*1.42), 2)
+        A = (80*1.42)
+        TM = ((0.19/(1.42**2))*(95*1.42))+(18/1.42)+((0.260971+0.266)*A)
+        #TM = ((D*/(I0^2))*(Wl*I0))+(Fw/I0)+((Jl+Jm)*Am)
+        print("Tm: ",TM)
+        TM1 = pow(TM, 2)
+        A = (0 * 1.42)
+        TM = ((0.19 / (1.42 ** 2)) * (95 * 1.42)) + (18 / 1.42) + ((0.260971 + 0.266) * A)
+        TM2 = pow(TM, 2)
+        A = (80 * 1.42)
+        TM = ((0.19 / (1.42 ** 2)) * (95 * 1.42)) + (18 / 1.42) + ((0.260971 + 0.266) * A)
+        TM3 = pow(TM, 2)
 
         Kt = 0.73
 
         Kt = 0.73
+        PM = TM*(95*1.42)
+        print("PM: ", PM)
+        I1 = (0.5*(95*1.42)*TM)/(m.sqrt(3)*400*0.82)
+        I3 = (0.5 * (95 * 1.42) * TM) / (m.sqrt(3) * 400 * 0.82)
+        A = (0 * 1.42)
+        TM = ((0.19 / (1.42 ** 2)) * (95 * 1.42)) + (18 / 1.42) + ((0.260971 + 0.266) * A)
+        I2 = ((95*1.42)*TM)/(m.sqrt(3)*400*0.82)
 
-        I1 = 0.0573 / Kt
-        I2 = 0.0973 / Kt
-        I3 = 0.0573 / Kt
+        #I = (Wm*Tm)/(Sqrt(3)*Ueff*CosPhi)
 
         print("I1:", I1)
         print("I2:", I2)
         print("I3:", I3)
 
 
-        I1 = pow(0.0573 / Kt, 2)
-        I2 = pow(0.0973 / Kt, 2)
-        I3 = pow(0.0573 / Kt, 2)
+        I1 = pow(I1, 2)
+        I2 = pow(I2, 2)
+        I3 = pow(I3, 2)
 
         Wrms = (m.sqrt(
             (1 / Tt) * ((W1 * T1) + (W2 * T2) + (W3 * T3))))
@@ -168,7 +180,7 @@ def RMS_B():
 
         TMrms = (m.sqrt(
             (1 / Tt) * ((TM1 * T1) + (TM2 * T2) + (TM3 * T3))))
-        print("TLrms: ", TMrms)
+        print("TMrms: ", TMrms)
 
         Irms = (
             m.sqrt((1 / Tt) * ((I1 * T1) + (I2 * T2) + (I3 * T3))))
@@ -176,3 +188,6 @@ def RMS_B():
 
         Prms = Wrms * TMrms
         print("Prms: ", Prms)
+
+        Nrms = Wrms * ((2*m.pi/60)**-1)
+        print("Nrms: ", Nrms)
