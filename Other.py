@@ -1,4 +1,7 @@
 import math as m
+from idlelib.zoomheight import WmInfoGatheringError
+from os import supports_effective_ids
+
 
 def PDR(pdr):
     calc = (2 * m.pi)/(pdr* 1e-3)
@@ -132,37 +135,42 @@ def RMS_A():
     print("Prms: ", Prms)
 
 def RMS_B():
+    
+        Jl = 0.190474
+        Wl = 95
+        Cosphi = 0.87
+        Jm = 0.195
+        I0 = 1.64
+
+        
         Tt = 2.6
         T1 = 1.1875  # Begin trapezium 1
         T2 = 0.225  # Eind Versnelling trapezium 1
         T3 = 1.1875  # Begin Vertaging trapezium 1
 
-        W1 = pow(0.5*(95*1.42), 2)
-        W2 = pow((95*1.42), 2)
-        W3 = pow(0.5*(95*1.42), 2)
-        A = (80*1.42)
-        TM = ((0.19/(1.42**2))*(95*1.42))+(18/1.42)+((0.260971+0.266)*A)
+        W1 = pow(0.5*(Wl*I0), 2)
+        W2 = pow((Wl*I0), 2)
+        W3 = pow(0.5*(Wl*I0), 2)
+        A = (80*I0)
+        TM = ((0.19/(I0**2))*(Wl*I0))+(18/I0)+((Jl+Jm)*A)
         #TM = ((D*/(I0^2))*(Wl*I0))+(Fw/I0)+((Jl+Jm)*Am)
         print("Tm: ",TM)
+
         TM1 = pow(TM, 2)
-        A = (0 * 1.42)
-        TM = ((0.19 / (1.42 ** 2)) * (95 * 1.42)) + (18 / 1.42) + ((0.260971 + 0.266) * A)
+        A = (0 * I0)
+        TM = ((0.19 / (I0 ** 2)) * (Wl * I0)) + (18 / I0) + ((Jl + Jm) * A)
         TM2 = pow(TM, 2)
-        A = (80 * 1.42)
-        TM = ((0.19 / (1.42 ** 2)) * (95 * 1.42)) + (18 / 1.42) + ((0.260971 + 0.266) * A)
+        A = (80 * I0)
+        TM = ((0.19 / (I0 ** 2)) * (Wl * I0)) + (18 / I0) + ((Jl + Jm) * A)
         TM3 = pow(TM, 2)
 
-        Kt = 0.73
-
-        Kt = 0.73
-        PM = TM*(95*1.42)
+        PM = TM*(Wl*I0)
         print("PM: ", PM)
-        I1 = (0.5*(95*1.42)*TM)/(m.sqrt(3)*400*0.82)
-        I3 = (0.5 * (95 * 1.42) * TM) / (m.sqrt(3) * 400 * 0.82)
-        A = (0 * 1.42)
-        TM = ((0.19 / (1.42 ** 2)) * (95 * 1.42)) + (18 / 1.42) + ((0.260971 + 0.266) * A)
-        I2 = ((95*1.42)*TM)/(m.sqrt(3)*400*0.82)
-
+        I1 = (0.5*(Wl*I0)*TM)/(m.sqrt(3)*400*Cosphi)
+        I3 = (0.5 * (Wl * I0) * TM) / (m.sqrt(3) * 400 * Cosphi)
+        A = (0 * I0)
+        TM = ((0.19 / (I0 ** 2)) * (Wl * I0)) + (18 / I0) + ((Jl + Jm) * A)
+        I2 = ((Wl*I0)*TM)/(m.sqrt(3)*400*Cosphi)
         #I = (Wm*Tm)/(Sqrt(3)*Ueff*CosPhi)
 
         print("I1:", I1)
